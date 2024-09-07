@@ -10,7 +10,7 @@ class HomeView(View):
         articles = Article.objects.all()
         main_news = articles[:7]
         featured_news = articles.order_by("?")[:10]
-        latest_news = articles.order_by("-id")[:8]
+        latest_news = articles.order_by("-id")[:12]
         
         context = {
             "categories": categories,
