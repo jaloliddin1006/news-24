@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
-from .models import Article
+from .models import Article, Category
 from .forms import ContactForm
 from django.contrib import messages
 # Create your views here.
@@ -55,3 +55,13 @@ class ContactView(View):
         messages.error(request, "Nimadir xato ketdi")
         return render(request, 'contact.html')
         
+        
+class CategoryArticlesListView(View):
+    def get(self, request, id):
+        category = get_object_or_404(Category, id=id)
+        articles = category.articles.all().filter(is_active=True)
+        
+        context = {
+            'articles': articles
+        }
+        return render(request, 'category.html', context)

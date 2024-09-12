@@ -20,6 +20,7 @@ class ArticleAdmin(admin.ModelAdmin):
     readonly_fields = ('views',)
     
     filter_horizontal = ('tags', )
+    list_editable = ('category', 'is_active')
     
     
 @admin.register(Contact)
