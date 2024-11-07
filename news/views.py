@@ -65,3 +65,9 @@ class CategoryArticlesListView(View):
             'articles': articles
         }
         return render(request, 'category.html', context)
+    
+from django.utils import translation
+from django.conf import settings
+
+def language_switcher(request, lan):
+    return redirect(f'/{lan}/')
